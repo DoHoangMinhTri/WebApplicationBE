@@ -10,9 +10,18 @@
 </head>
 <div>
 
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal bg-info">
+        <!--<dt>-->
+            @*@Html.DisplayNameFor(model => model.ProductImage)*@
+            <!--Product image
+        </dt>-->
+        <dd>
+            @*@Html.DisplayFor(model => model.ProductImage)*@
+            <img src="@Html.DisplayFor(model => model.ProductImage)" />
+        </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.ProductName)
+            @*@Html.DisplayNameFor(model => model.ProductName)*@
+            Product name
         </dt>
 
         <dd>
@@ -20,15 +29,17 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ProductDecription)
+            @*@Html.DisplayNameFor(model => model.ProductDecription)*@
+            Product description
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ProductDecription)
+            @Html.DisplayTextFor(model => model.ProductDecription)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ProductPrice)
+            @*@Html.DisplayNameFor(model => model.ProductPrice)*@
+            Price
         </dt>
 
         <dd>
@@ -36,15 +47,8 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ProductImage)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProductImage)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.CategoryName)
+            @*@Html.DisplayNameFor(model => model.Category.CategoryName)*@
+            Category name
         </dt>
 
         <dd>

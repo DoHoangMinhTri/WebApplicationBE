@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using PagedList.Mvc;
 
 namespace WebApplicationBE.Models.ViewModel
 {
@@ -13,6 +14,7 @@ namespace WebApplicationBE.Models.ViewModel
         public string SortOrder { get; set; }
         public int PageNumber { get; set; }
         public int PageSize { get; set; } = 10;
-        public List<Product> Products { get; set; }
+        //public List<Product> Products { get; set; }
+        public PagedList.IPagedList<Product> Products {get; set;}
     }
 }

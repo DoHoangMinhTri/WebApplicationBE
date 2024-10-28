@@ -1,0 +1,89 @@
+﻿@model WebApplicationBE.Models.ViewModel.ProductSearchVM
+@using PagedList.Mvc
+<head>
+    <style>
+        img {
+            height: 250px;
+            max-width: 300px;
+        }
+    </style>
+</head>
+
+@if (Model.Products != null && Model.Products.Any())
+{
+    <h2 class="bg-success">DANH SÁCH SẢN PHẨM</h2>
+
+    <table class="table bg-info table-responsive">
+        <thead>
+            <tr>
+                <th class="bg-success col-md-2">
+                    @*@Html.DisplayNameFor(model => model.ProductImage)*@
+                    Hình ảnh
+                </th>
+                <th class="bg-success col-md-3">
+                    @*@Html.DisplayNameFor(model => model.ProductName)*@
+                    Tên sản phẩm
+                </th>
+                <!--<th class="bg-success col-md-2">-->
+                    @*@Html.DisplayNameFor(model => model.ProductDecription)*@
+                    <!--Mô tả
+                </th>-->
+                <th class="bg-success col-md-1">
+                    @*@Html.DisplayNameFor(model => model.ProductPrice)*@
+                    Đơn giá
+                </th>
+                
+                <th class="bg-success col-md-2">
+                    @*@Html.DisplayNameFor(model => model.Category.CategoryName)*@
+                    Danh mục
+                </th>
+                <th class="bg-success col-md-4"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Products)
+            {
+                <tr>
+                    <td>
+                        <img src="@Html.DisplayFor(modelItem => item.ProductImage)" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.ProductDecription)
+                    </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductPrice)
+                    </td>
+                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }, new { @class = "btn btn-primary btn-sm" })
+                        @Html.ActionLink("Details", "Details", new { id = item.ProductID }, new { @class = "btn btn-primary btn-sm" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ProductID }, new { @class = "btn btn-primary btn-sm" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="pagination">
+        @Html.PagedListPager(Model.Products, page => Url.Action("Index", new {page, searchTerm = Model.SearchTerm ,
+            minPrice = Model.MinPrice, maxPrice = Model.MaxPrice, sortOrder = Model.SortOrder}))
+    </div>
+ }
+else
+{
+    <p>Không tìm được sản phẩm phù hợp</p>
+}
+
+<div class="form-group">
+    <div class="col-md-offset-8 col-md-4">
+        @Html.ActionLink("Create new", "Create", null, new {@class = "btn btn-primary"})
+    </div>
+</div>
+
+
+    
